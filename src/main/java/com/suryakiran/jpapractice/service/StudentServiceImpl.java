@@ -28,12 +28,21 @@ public class StudentServiceImpl implements StudentsService {
 
     @Override
     public Optional<StudentsEntity> getStudentDataById(int id) {
-        return studentRepository.findById(id);
+        if (studentRepository.existsById(id)){
+            return studentRepository.findById(id);
+        }else{
+            throw new RuntimeException("Student Not Found with Id :"+id);
+        }
+
     }
 
     @Override
     public String deleteStudentById(int id) {
-        studentRepository.deleteById(id);
-        return "Student Data Deleted Successfully with Id : " + id;
+        if (studentRepository.existsById(id)) {
+            studentRepository.deleteById(id);
+            return "Student Data Deleted Successfully with Id : " + id;
+        }else{
+            throw new RuntimeException("Student Not Found with Id :"+id);
+        }
     }
 }
