@@ -3,9 +3,11 @@ package com.suryakiran.jpapractice.controller;
 import com.suryakiran.jpapractice.entity.StudentsEntity;
 import com.suryakiran.jpapractice.service.StudentsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/web/student")
@@ -31,7 +33,7 @@ public class StudentController {
     }
 
     @GetMapping("/getdatabyid/{id}")
-    public StudentsEntity getStudentDataById(@PathVariable(name = "id") int id){
+    public Optional<StudentsEntity> getStudentDataById(@PathVariable(name = "id") int id){
         return studentsService.getStudentDataById(id);
     }
 
