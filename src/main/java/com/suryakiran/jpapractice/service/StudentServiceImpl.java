@@ -1,6 +1,7 @@
 package com.suryakiran.jpapractice.service;
 
 import com.suryakiran.jpapractice.entity.StudentsEntity;
+import com.suryakiran.jpapractice.exception.StudentNotFoundException;
 import com.suryakiran.jpapractice.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,7 +43,7 @@ public class StudentServiceImpl implements StudentsService {
             studentRepository.deleteById(id);
             return "Student Data Deleted Successfully with Id : " + id;
         }else{
-            throw new RuntimeException("Student Not Found with Id :"+id);
+            throw new StudentNotFoundException("Student Not Found with Id :"+id);
         }
     }
 }

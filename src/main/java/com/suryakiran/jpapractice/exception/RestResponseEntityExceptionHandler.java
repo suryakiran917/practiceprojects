@@ -15,8 +15,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     @ResponseBody
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorMessage studentNotFoundExceptionHandler(StudentNotFoundException studentNotFoundException){
-        ErrorMessage message = new ErrorMessage(HttpStatus.NOT_FOUND,studentNotFoundException.getMessage());
-        return message;
+        return new ErrorMessage(HttpStatus.NOT_FOUND,studentNotFoundException.getMessage());
     }
 
     @ExceptionHandler(Exception.class)
